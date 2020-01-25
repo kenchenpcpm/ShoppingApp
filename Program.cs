@@ -1,21 +1,22 @@
 ﻿using DocumentFormat.OpenXml.Spreadsheet;
 using System;
+using System.Collections.Generic;
 
 namespace ShoppingCart
 {
     class Program
     {
+        public static IEList list { get; private set; }
+
         static void Main(string[] args)
         {
-            //EItem item = new Cart("Ken's shopping cart");
+            IEList item = new DiskList("Ken's shopping cart");
 
-            var myAccount = new Account();
-            myAccount.AccountName = "Ken's account";
-            myAccount.ShoppingCart = " \n";
 
-            EnterItems(item);
-            
+            EnterLists(list);
+            //EnterItems(item);
 
+            Console.WriteLine($"");
             Console.WriteLine($"Account Name:  {myAccount.AccountName}, Total Items: {myAccount.AccountTotal }  ");
         }
 
@@ -24,7 +25,7 @@ namespace ShoppingCart
 
         }
 
-        public static void EnterItems(EItem item)
+        public static void EnterLists(IEList list)
         {
             while (true)
             {
